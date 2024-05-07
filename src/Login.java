@@ -3,9 +3,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.HashMap;
-
-import static java.awt.Transparency.TRANSLUCENT;
 
 public class Login implements ActionListener {
 
@@ -75,25 +77,41 @@ public class Login implements ActionListener {
             String userID = usernameField.getText();
             String password = String.valueOf(passwordField.getPassword());
 
-            if (loginInfo.containsKey(userID)) {
-                if (loginInfo.get(userID).equals(password)) {
-                    messageLabel.setForeground(Color.green);
-                    messageLabel.setText("Login Successful");
+            try {
+//                open sql connection
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false","root","mysql@123");
 
+                Statement stm = con.createStatement();
+
+                String query = "SELECT * FROM login WHERE username = '"+userID+"' AND password = '"+password+"'";
+                ResultSet result = stm.executeQuery(query);
+
+
+                if (result.next()) {
                     Welcome welcome = new Welcome();
+                    frame.dispose();
 
                 }
                 else {
                     messageLabel.setForeground(Color.red);
-                    messageLabel.setText("Password Incorrect");
-
+                    messageLabel.setText("Username/Password Incorrect");
+                    usernameField.setText("");
+                    passwordField.setText("");
                 }
-            }
-            else {
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText("Username not found");
+                con.close();
 
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                System.out.println(ex.getCause());
             }
+
+
+        }
+
+        if (e.getSource() == registerButton) {
+            Register reg = new Register();
+            frame.dispose();
         }
     }
 }
