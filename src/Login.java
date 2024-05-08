@@ -1,13 +1,12 @@
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.HashMap;
 
 public class Login implements ActionListener {
 
@@ -27,10 +26,8 @@ public class Login implements ActionListener {
     JLabel passwordLabel = new JLabel("Password");
     JLabel messageLabel = new JLabel("",SwingConstants.CENTER);
 
-    HashMap<String,String> loginInfo = new HashMap<>();
 
-    Login(HashMap<String, String> loginInfoCopy) {
-        loginInfo = loginInfoCopy;
+    Login() {
 
 //        label pos
         usernameLabel.setBounds(122,65,75,25);
@@ -80,11 +77,11 @@ public class Login implements ActionListener {
             try {
 //                open sql connection
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false","root","mysql@123");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?allowPublicKeyRetrieval=true&useSSL=false","root","mysql@123");
 
                 Statement stm = con.createStatement();
 
-                String query = "SELECT * FROM login WHERE username = '"+userID+"' AND password = '"+password+"'";
+                String query = "SELECT * FROM info WHERE username = '"+userID+"' AND password = '"+password+"'";
                 ResultSet result = stm.executeQuery(query);
 
 
