@@ -1,18 +1,15 @@
 # Login and Registration Form using Java and MySQL
-
-
-## Overview
-
+This project uses the Java Database Connectivity (JDBC) API to register new user accounts and facilitate logins. User-provided usernames and passwords are inserted into a MySQL database table via a GUI interface. Users can then log in by comparing their input on the login page to the information stored in the database. If successful, they are granted access to the welcome page.
 
 ## Tools & Requirements
 - MySQL
-- JDBC
+- JDBC Driver for MySQL (Connector/J)
 - For this project, a database called "users" was created containing a table called "info" formatted as follows:
 <p align="center">
 <img src="https://github.com/MJHendricks/LoginForm/assets/65013192/4025f646-8507-4490-b56a-f5afa4c44d5d">
 </p>
 
-- It is also essential for the MySQL service to be running at all times for the project to function correctly.
+- It is also essential for the MySQL Service to be running at all times for this project to function correctly.
 
 
 ## Project Screenshots
