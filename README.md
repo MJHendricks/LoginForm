@@ -3,7 +3,17 @@
 
 ## Overview
 
+
 ## Tools & Requirements
+- MySQL
+- JDBC
+- For this project, a database called "users" was created containing a table called "info" formatted as follows:
+<p align="center">
+<img src="https://github.com/MJHendricks/LoginForm/assets/65013192/4025f646-8507-4490-b56a-f5afa4c44d5d">
+</p>
+
+- It is also essential for the MySQL service to be running at all times for the project to function correctly.
+
 
 ## Project Screenshots
 - This is the first screen you see upon running the application. There are text fields for a username and password, a login button and a register button.
