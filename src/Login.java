@@ -49,7 +49,7 @@ public class Login implements ActionListener {
         registerButton.setFocusable(false);
 
 //      gui
-        frame.setTitle("Data Analysis Solutions");
+        frame.setTitle("Login");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(320,320);
         frame.setLayout(null);

@@ -46,7 +46,7 @@ public class Register implements ActionListener {
         loginButton.setFocusable(false);
 
 //      gui
-        frame.setTitle("Data Analysis Solutions");
+        frame.setTitle("Register");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(320,320);
         frame.setLayout(null);
